@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.6.0;
+pragma solidity 0.6.0;
 
 import "../node_modules/@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "../node_modules/@openzeppelin/contracts/access/Ownable.sol";
 
 contract TechToken is ERC20, Ownable {
 
-    address burnerRole;
+    address public burnerRole;
 
     constructor () ERC20("TechToken", "TECH") public {
         // mint fixed supply of 1 billion tokens having 18 decimals
