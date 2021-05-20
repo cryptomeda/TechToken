@@ -6,7 +6,9 @@ import "../node_modules/@openzeppelin/contracts/access/Ownable.sol";
 
 contract TechToken is ERC20, Ownable {
 
-    address public burnerRole;
+    event BurnerRoleChanged(address newBurner);
+
+    address private burnerRole;
 
     constructor () ERC20("TechToken", "TECH") public {
         // mint fixed supply of 1 billion tokens having 18 decimals
@@ -22,5 +24,6 @@ contract TechToken is ERC20, Ownable {
     function changeBurnerRole(address newBurnerRole) onlyOwner external {
         require(newBurnerRole != address(0), "TechToken: new burnerRole is the zero address");
         burnerRole = newBurnerRole;
+        emit BurnerRoleChanged(burnerRole);
     }
 }
